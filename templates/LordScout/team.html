@@ -1,0 +1,27 @@
+Team: {{ team.number }}
+<br>
+<br>
+<h2>Overall</h2>
+	{% for value in team.overall.Values %}
+		{{ value.str }}: {{ value.average }}<br>
+	{% endfor %}
+	
+	{{ team.overall.autoBall.str }} -
+	{% for value in team.overall.autoBall.percents %}
+		{{value.title}}: {{ value.percent }}%
+	{% endfor %}
+<br>
+<h2>Reports</h2>
+{% for report in team.reports %}
+	Overall - {{ report.points }}
+	<h3>Autonomous</h3>
+		{% for autoItem in report.AutoScoutingItemList %}
+			<strong>{{ autoItem.title }}</strong>: {{ autoItem.str }}<br>
+		{% endfor %}
+	<h3>Teleop</h3>
+		{% for teleItem in report.TeleScoutingItemList %}
+			<strong>{{ teleItem.title }}</strong>: {{ teleItem.str }}<br>
+		{% endfor %}
+	Extra notes: <textarea>{{ report.extraNotes }}</textarea>
+	<hr>
+{% endfor %}

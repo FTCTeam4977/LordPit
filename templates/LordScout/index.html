@@ -1,0 +1,6 @@
+Hello!<br><br>
+
+Available Teams:<br>
+{% for team in teams %}
+	<a href="{{team.number}}/info">{{ team.number }}</a> - {{team.overall.avgPoints.average}}<br>
+{% endfor %}
